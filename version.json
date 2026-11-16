@@ -1,8 +1,8 @@
 {
-    "version":  "1.3.4",
-    "build":  31,
+    "version":  "1.3.5",
+    "build":  32,
     "size":  3895456,
-    "md5":  "9550bac2381e6b2faef07bb80f136467",
-    "date":  "2026-11-12 22:01",
-    "notes":  "Įsimenami Wi-Fi tinklai ir jų slaptažodžiai, automatinis perjungimas į kitą žinomą tinklą; mažiau mirgėjimo atnaujinant duomenis"
+    "md5":  "3a158efa458be1b314773e7b022e8867",
+    "date":  "2026-11-16 21:51",
+    "notes":  "24 Hz ekrano atnaujinimas foninio duomenų atnaujinimo metu (mažiau mirgėjimo)"
 }
