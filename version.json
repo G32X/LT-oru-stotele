@@ -1,8 +1,8 @@
 {
-    "version":  "1.3.6",
-    "build":  33,
-    "size":  3920528,
-    "md5":  "e18a5baec7607829d4020133a9970ee4",
-    "date":  "2026-11-17 21:21",
-    "notes":  "Hidrologija: LHMT vandens matavimo stotys (lygis, temperatūra, 7 dienų grafikai); žemėlapio režimų išskleidžiamas sąrašas; Orai pervadinta į Temperatūra"
+    "version":  "1.3.7",
+    "build":  34,
+    "size":  3920544,
+    "md5":  "7d80751f29c0db501a27f72b818b24dd",
+    "date":  "2026-11-17 21:26",
+    "notes":  "Režimas pervadintas į "
 }
