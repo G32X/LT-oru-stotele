@@ -1,8 +1,8 @@
 {
-    "version":  "1.3.7",
-    "build":  34,
-    "size":  3920544,
-    "md5":  "7d80751f29c0db501a27f72b818b24dd",
-    "date":  "2026-11-17 21:26",
-    "notes":  "Režimas pervadintas į "
+    "version":  "1.3.8",
+    "build":  35,
+    "size":  3920736,
+    "md5":  "ac6db1581431d2c953b76f2771fea098",
+    "date":  "2026-11-17 22:15",
+    "notes":  "Upių ir ežerų režime viršuje rodomas pasirinktas vandens telkinys; ilgas faktinių orų tekstas telpa dviem eilutėmis"
 }
