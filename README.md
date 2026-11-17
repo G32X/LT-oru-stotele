@@ -20,7 +20,7 @@ Ekraniukai ją atsisiunčia per Wi-Fi: **Nustatymai → Programinė įranga**.
 
 ## Orų duomenys (LHMT, CC BY-SA 4.0)
 
-Prognozės, faktiniai stebėjimai ir vietovių bei stočių sąrašas gaunami iš
+Prognozės, faktiniai stebėjimai, hidrologiniai matavimai (vandens lygis ir temperatūra) ir vietovių bei stočių sąrašai gaunami iš
 **Lietuvos hidrometeorologijos tarnybos prie Aplinkos ministerijos (LHMT)**: <https://api.meteo.lt>.
 
 Duomenys naudojami pagal licenciją **Creative Commons Priskyrimas–Analogiškas platinimas 4.0 tarptautinė (CC BY-SA 4.0)**:
@@ -30,7 +30,8 @@ Duomenys yra pakeisti:
 - reikšmės suapvalintos;
 - parenkama artimiausia prognozės valanda;
 - duomenys sugrupuoti pagal dienas;
-- duomenys pavaizduoti ikonomis, grafiku ir žemėlapyje.
+- duomenys pavaizduoti ikonomis, grafiku ir žemėlapyje;
+- vandens lygio ir temperatūros pokytis apskaičiuotas per parą.
 
 Ekraniuke rodomi išvestiniai orų duomenys taip pat platinami pagal CC BY-SA 4.0.
 
