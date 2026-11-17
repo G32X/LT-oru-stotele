@@ -11,8 +11,10 @@ Ekraniukai ją atsisiunčia per Wi-Fi: **Nustatymai → Programinė įranga**.
 | Pradžios ekranas | Orų žemėlapis ir dabartiniai orai |
 | ![Vėjas ir valandinė prognozė](screenshots/02-vejas-valandos.png) | ![Krituliai ir savaitė](screenshots/03-krituliai-savaite.png) |
 | Vėjo žemėlapis ir valandinė prognozė | Kritulių žemėlapis ir savaitės prognozė |
-| ![Radaras](screenshots/04-radaras.png) | ![Paieška](screenshots/05-paieska.png) |
-| Kritulių radaras (2 val. istorija, lietus ir sniegas, atnaujinama kas 10 min.) | Vietovės paieška (2324 LHMT vietovės) |
+| ![Radaras](screenshots/04-radaras.png) | ![Upės ir ežerai](screenshots/10-upes-ezerai.png) |
+| Kritulių radaras (2 val. istorija, lietus ir sniegas, atnaujinama kas 10 min.) | Upės ir ežerai: 97 LHMT vandens matavimo stotys, vandens lygis ir temperatūra, 7 dienų grafikai |
+| ![Žemėlapio režimai](screenshots/11-rezimai.png) | ![Paieška](screenshots/05-paieska.png) |
+| Žemėlapio režimų sąrašas | Vietovės paieška (2324 LHMT vietovės, taip pat upės ir ežerai) |
 | ![Šviesi tema](screenshots/08-sviesi-orai.png) | ![Šviesi tema, radaras](screenshots/09-sviesi-radaras.png) |
 | Šviesi tema | Šviesi tema: radaras ir savaitės prognozė |
 | ![Nustatymai](screenshots/07-nustatymai.png) | ![Užsklanda](screenshots/06-uzsklanda.png) |
