@@ -14,4 +14,10 @@
 | Waveshare ESP32-S3-Touch-LCD-7B pavyzdžiai (I2C, IO plėtiklis, RGB LCD, GT911, LVGL portas) | © Waveshare, © Espressif Systems | Apache-2.0 (pakeisti: LCD buferių ir laikų nustatymai, USB/CAN IO5 klaidos taisymas, touch injekcija testams) | [licenses/Apache-2.0.txt](licenses/Apache-2.0.txt) |
 | Montserrat šriftas (konvertuotas į bitmap šriftus) | © The Montserrat Project Authors | SIL Open Font License 1.1 | [licenses/OFL-1.1-Montserrat.txt](licenses/OFL-1.1-Montserrat.txt) |
 
+Įrašymo puslapyje (`index.html`, `flash/`) naudojama:
+
+| Komponentas | Autorių teisės | Licencija | Tekstas |
+|---|---|---|---|
+| esptool-js 0.7.1 (`flash/esptool-js-0.7.1.js`, su įtraukta pako biblioteka) | © Espressif Systems; pako © Andrei Tuputcyn, Vitaly Puzrin | Apache-2.0; pako – MIT ir zlib | [licenses/Apache-2.0.txt](licenses/Apache-2.0.txt), [licenses/MIT-pako.txt](licenses/MIT-pako.txt), [licenses/zlib.txt](licenses/zlib.txt) |
+
 Duomenų šaltiniai ir jų licencijos: žr. [README.md](README.md).

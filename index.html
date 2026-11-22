@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orų stotelės įrašymas</title>
+<meta name="description" content="Lietuvos orų stotelės programos įrašymas į Waveshare ESP32-S3-Touch-LCD-7B ekraną tiesiai iš naršyklės per USB.">
+<style>
+  :root {
+    --bg: #f4f6f9; --card: #ffffff; --text: #1b2430; --muted: #5d6b7c; --line: #dde3ea;
+    --accent: #1f6fd1; --accent-text: #ffffff; --ok: #1d8a4e; --warn: #b26a00; --err: #c0392b;
+    --bar: #e6ebf1; --log: #f0f3f7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f141a; --card: #18202a; --text: #e6edf3; --muted: #93a1b0; --line: #2a3542;
+      --accent: #4c9bff; --accent-text: #08121e; --ok: #3ccf7f; --warn: #f0a63a; --err: #ff6b5b;
+      --bar: #263241; --log: #111821;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f141a; --card: #18202a; --text: #e6edf3; --muted: #93a1b0; --line: #2a3542;
+    --accent: #4c9bff; --accent-text: #08121e; --ok: #3ccf7f; --warn: #f0a63a; --err: #ff6b5b;
+    --bar: #263241; --log: #111821;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 48px; }
+  h1 { font-size: 1.6rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .card h2 { font-size: 1.05rem; margin: 0 0 12px; }
+  .ver { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; }
+  .ver b { font-size: 1.3rem; }
+  .muted { color: var(--muted); }
+  ol { margin: 0; padding-left: 1.3em; }
+  ol li { margin: 4px 0; }
+  .modes { display: grid; gap: 10px; }
+  .mode { display: flex; gap: 12px; align-items: flex-start; border: 1px solid var(--line); border-radius: 10px;
+          padding: 12px; cursor: pointer; }
+  .mode:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+  .mode input { margin-top: 5px; accent-color: var(--accent); }
+  .mode span { display: block; }
+  .mode small { color: var(--muted); }
+  button { font: inherit; font-weight: 600; border: 0; border-radius: 10px; padding: 12px 22px; cursor: pointer;
+           background: var(--accent); color: var(--accent-text); }
+  button:disabled { opacity: .5; cursor: default; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 16px; }
+  .bar { height: 10px; background: var(--bar); border-radius: 5px; overflow: hidden; margin: 14px 0 6px; }
+  .bar div { height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+  #status { font-weight: 600; }
+  #status.ok { color: var(--ok); } #status.err { color: var(--err); } #status.warn { color: var(--warn); }
+  .notice { border-left: 4px solid var(--warn); padding: 10px 14px; background: var(--card); border-radius: 8px;
+            margin-bottom: 16px; }
+  .notice.err { border-color: var(--err); }
+  details summary { cursor: pointer; color: var(--muted); }
+  pre { background: var(--log); border-radius: 8px; padding: 10px; font-size: 12px; max-height: 260px; overflow: auto;
+        white-space: pre-wrap; word-break: break-all; margin: 8px 0 0; }
+  footer { color: var(--muted); font-size: .85rem; margin-top: 24px; }
+  a { color: var(--accent); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Lietuvos orų stotelė</h1>
+  <p class="sub">Programos įrašymas į Waveshare ESP32-S3-Touch-LCD-7B ekraną tiesiai iš naršyklės, per USB laidą.</p>
+
+  <div id="noSerial" class="notice err" hidden>
+    Ši naršyklė negali jungtis prie USB įrenginių. Atidarykite šį puslapį kompiuteryje su
+    <b>Google Chrome</b> arba <b>Microsoft Edge</b>.
+  </div>
+
+  <section class="card">
+    <h2>Naujausia versija</h2>
+    <div class="ver"><b id="ver">…</b><span class="muted" id="verInfo"></span></div>
+    <p class="muted" id="notes" style="margin:8px 0 0"></p>
+  </section>
+
+  <section class="card">
+    <h2>Kaip įrašyti</h2>
+    <ol>
+      <li>Prijunkite ekraną prie kompiuterio USB-C laidu (laidas turi perduoti duomenis, ne tik krauti).</li>
+      <li>Pasirinkite, ką daryti, ir spauskite <b>Įrašyti</b>.</li>
+      <li>Naršyklės lange pasirinkite įrenginį <b>„USB JTAG/serial debug unit“</b> (arba panašų) ir spauskite <b>Prisijungti</b>.</li>
+      <li>Palaukite, kol įrašymas baigsis (apie 1–2 min.). Laido neatjunkite.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>Ką daryti</h2>
+    <div class="modes">
+      <label class="mode">
+        <input type="radio" name="mode" value="update" checked>
+        <span><span>Atnaujinti programą</span>
+          <small>Wi-Fi slaptažodžiai, pasirinkta vieta ir kiti nustatymai išlieka.</small></span>
+      </label>
+      <label class="mode">
+        <input type="radio" name="mode" value="fresh">
+        <span><span>Įrašyti iš naujo (naujas ekranas)</span>
+          <small>Ištrinami visi nustatymai ir išsaugoti Wi-Fi tinklai. Tinka naujam ekranui arba atiduodant jį kitam žmogui.</small></span>
+      </label>
+    </div>
+    <div class="actions">
+      <button id="go" disabled>Įrašyti</button>
+      <span class="muted" id="hint"></span>
+    </div>
+    <div id="progress" hidden>
+      <div class="bar"><div id="barFill"></div></div>
+      <div id="status"></div>
+      <p class="muted" id="after" hidden style="margin:8px 0 0"></p>
+    </div>
+    <details style="margin-top:14px">
+      <summary>Techninė informacija</summary>
+      <pre id="log"></pre>
+    </details>
+  </section>
+
+  <section class="card">
+    <h2>Jei nepavyksta</h2>
+    <ul style="margin:0;padding-left:1.2em">
+      <li>Uždarykite kitas programas, kurios gali naudoti tą patį USB prievadą (pvz. Arduino IDE, PlatformIO, serijinio prievado monitorių).</li>
+      <li>Pabandykite kitą USB laidą arba kitą kompiuterio USB lizdą.</li>
+      <li>Jei įrenginio sąraše nieko nėra: atjunkite laidą, laikykite ekrano plokštės mygtuką <b>BOOT</b>, prijunkite laidą ir atleiskite mygtuką. Tada bandykite dar kartą.</li>
+      <li>Jei po įrašymo ekranas lieka tamsus: atjunkite USB laidą ir vėl jį prijunkite.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Viskas vyksta jūsų naršyklėje: programa atsisiunčiama iš šio puslapio ir įrašoma per USB, jokie duomenys niekur nesiunčiami.
+    Įrašymui naudojama <a href="https://github.com/espressif/esptool-js">esptool-js</a> (Apache-2.0).
+    <a href="https://github.com/G32X/oru-orai-firmware">Programos failai ir licencijos</a>.
+  </footer>
+</main>
+
+<script type="module">
+import { ESPLoader, Transport } from "./flash/esptool-js-0.7.1.js";
+import { md5 } from "./flash/md5.js";
+
+const $ = (id) => document.getElementById(id);
+const logEl = $("log");
+function log(s) { logEl.textContent += s + "\n"; logEl.scrollTop = logEl.scrollHeight; }
+function status(text, cls = "") { $("status").textContent = text; $("status").className = cls; }
+function bar(pct) { $("barFill").style.width = Math.max(0, Math.min(100, pct)).toFixed(1) + "%"; }
+
+const hasSerial = "serial" in navigator;
+if (!hasSerial) $("noSerial").hidden = false;
+
+let info = null, manifest = null;
+
+async function loadInfo() {
+  try {
+    const [v, m] = await Promise.all([
+      fetch("version.json", { cache: "no-cache" }).then((r) => { if (!r.ok) throw new Error("version.json " + r.status); return r.json(); }),
+      fetch("flash/manifest.json", { cache: "no-cache" }).then((r) => { if (!r.ok) throw new Error("manifest.json " + r.status); return r.json(); }),
+    ]);
+    info = v; manifest = m;
+    $("ver").textContent = "v" + v.version;
+    $("verInfo").textContent = "build " + v.build + " · " + v.date + " · " + (v.size / 1048576).toFixed(1) + " MB";
+    $("notes").textContent = v.notes || "";
+    if (hasSerial) $("go").disabled = false;
+  } catch (e) {
+    $("ver").textContent = "nepavyko gauti";
+    $("hint").textContent = "Nepavyko atsisiųsti versijos informacijos. Perkraukite puslapį.";
+    log("Klaida: " + e.message);
+  }
+}
+
+async function fetchBin(path) {
+  const r = await fetch(path, { cache: "no-cache" });
+  if (!r.ok) throw new Error("Nepavyko atsisiųsti " + path + " (" + r.status + ")");
+  return new Uint8Array(await r.arrayBuffer());
+}
+
+const terminal = {
+  clean() {},
+  writeLine(s) { log(s); },
+  write(s) { logEl.textContent += s; },
+};
+
+let busy = false;
+window.addEventListener("beforeunload", (e) => { if (busy) { e.preventDefault(); e.returnValue = ""; } });
+
+$("go").addEventListener("click", async () => {
+  const fresh = document.querySelector("input[name=mode]:checked").value === "fresh";
+  if (fresh && !confirm("Bus ištrinti visi ekrano nustatymai ir išsaugoti Wi-Fi tinklai. Tęsti?")) return;
+
+  let port;
+  try {
+    port = await navigator.serial.requestPort({ filters: [{ usbVendorId: 0x303a }] });
+  } catch (e) {
+    return;   // the user closed the device picker
+  }
+
+  busy = true;
+  $("go").disabled = true;
+  $("progress").hidden = false;
+  $("after").hidden = true;
+  bar(0);
+  let transport = null;
+  try {
+    status("Atsisiunčiama programa…");
+    const files = [];
+    for (const p of manifest.parts) {
+      const data = await fetchBin(p.path);
+      if (p.max_size && data.length > p.max_size) throw new Error(p.path + " per didelis");
+      files.push({ data, address: p.offset, path: p.path });
+    }
+    const app = files.find((f) => f.path === "firmware.bin");
+    if (app && info.md5 && md5(app.data) !== info.md5)
+      throw new Error("Atsisiųsta programa sugadinta (MD5 nesutampa). Perkraukite puslapį ir bandykite dar kartą.");
+    if (fresh) {   // clear the settings partition (Wi-Fi networks, place, theme)
+      files.splice(1, 0, { data: new Uint8Array(manifest.nvs.size).fill(0xff), address: manifest.nvs.offset, path: "nvs (išvalymas)" });
+    }
+    const total = files.reduce((n, f) => n + f.data.length, 0);
+    log("Failai: " + files.map((f) => f.path + " @0x" + f.address.toString(16) + " (" + f.data.length + " B)").join(", "));
+
+    status("Jungiamasi prie ekrano…");
+    transport = new Transport(port, true);
+    const loader = new ESPLoader({ transport, baudrate: 921600, romBaudrate: 921600, terminal });   // native USB: the baud rate is ignored, skip the port reopen
+    const chipDesc = await loader.main();
+    log("Lustas: " + chipDesc);
+    if (loader.chip.CHIP_NAME !== manifest.chip)
+      throw new Error("Prijungtas ne tas įrenginys: rastas " + loader.chip.CHIP_NAME + ", reikia " + manifest.chip + ".");
+    const fsize = await loader.detectFlashSize();
+    log("Flash atmintis: " + fsize);
+    const mb = fsize ? parseInt(fsize, 10) : 0;
+    if (mb && mb < manifest.flash_min_mb)
+      throw new Error("Per maža flash atmintis (" + fsize + "): tai ne " + manifest.board + ".");
+
+    status("Įrašoma… 0 %");
+    await loader.writeFlash({
+      fileArray: files.map((f) => ({ data: f.data, address: f.address })),
+      flashMode: "keep", flashFreq: "keep", flashSize: "keep",
+      eraseAll: false, compress: true,
+      reportProgress: (idx, written, size) => {   // written/size count compressed bytes of file idx
+        let before = 0;
+        for (let k = 0; k < idx; k++) before += files[k].data.length;
+        const frac = size ? Math.min(written / size, 1) : 1;
+        const pct = ((before + frac * files[idx].data.length) / total) * 100;
+        bar(pct);
+        status("Įrašoma… " + Math.floor(pct) + " %");
+      },
+      calculateMD5Hash: (img) => md5(img),
+    });
+    bar(100);
+    status("Perkraunamas ekranas…");
+    await loader.after("hard_reset");
+    status("Baigta! Programa įrašyta.", "ok");
+    $("after").textContent = fresh
+      ? "Ekranas paleidžiamas iš naujo ir paprašys prisijungti prie Wi-Fi. Jei per 15 s ekranas lieka tamsus, atjunkite ir vėl prijunkite USB laidą."
+      : "Ekranas paleidžiamas iš naujo su nauja versija. Jei per 15 s ekranas lieka tamsus, atjunkite ir vėl prijunkite USB laidą.";
+    $("after").hidden = false;
+  } catch (e) {
+    const msg = String(e && e.message ? e.message : e);
+    log("Klaida: " + msg);
+    let nice = msg;
+    if (/open|in use|busy|NetworkError|Failed to open/i.test(msg))
+      nice = "Nepavyko atidaryti USB prievado. Uždarykite kitas programas, kurios jį naudoja, ir bandykite dar kartą.";
+    else if (/timeout|Failed to connect|sync/i.test(msg))
+      nice = "Ekranas neatsako. Pabandykite: atjunkite laidą, laikykite BOOT mygtuką, prijunkite laidą, atleiskite mygtuką ir spauskite Įrašyti dar kartą.";
+    status(nice, "err");
+  } finally {
+    try { if (transport) await transport.disconnect(); } catch (e) { /* already closed */ }
+    busy = false;
+    $("go").disabled = !hasSerial || !info;
+  }
+});
+
+loadInfo();
+</script>
+</body>
+</html>
