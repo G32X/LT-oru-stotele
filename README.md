@@ -5,7 +5,7 @@ Ekraniukai ją atsisiunčia per Wi-Fi: **Nustatymai → Programinė įranga**.
 
 ## Įrašymas per USB (naujam ekraniukui)
 
-Naują ekraniuką galima užprogramuoti tiesiai iš naršyklės: **<https://g32x.github.io/oru-orai-firmware/>**
+Naują ekraniuką galima užprogramuoti tiesiai iš naršyklės: **<https://g32x.github.io/LT-oru-stotele/>**
 (Chrome arba Edge kompiuteryje, ekraniukas prijungtas USB-C laidu). Galima tik atnaujinti programą
 (nustatymai išlieka) arba įrašyti iš naujo (ištrinami visi nustatymai ir Wi-Fi tinklai).
 
