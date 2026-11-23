@@ -71,8 +71,14 @@ Programinėje įrangoje įdiegti du LHMT sąrašai, jie čia pateikti atvirai pa
   qceJkY1Cf++Pm17dEgKdvKEOiuvehF11xfsrbzjApfDFSeHsseuwry1Iqg==
   -----END PUBLIC KEY-----
   ```
+- **Tik naujesnės versijos.** Nuo v1.3.13 ekraniukas prieš persikraudamas patikrina, ar atsisiųsta versija naujesnė už įdiegtą,
+  ir senesnės versijos neįdiegia, net jei ji tinkamai pasirašyta.
+- **Jokių tinklo paslaugų.** Ekraniukas neatidaro jokių tinklo prievadų: jame nėra interneto serverio, nuotolinio prisijungimo
+  ar debesijos paskyrų. Bluetooth išjungtas.
 - **Šifruotas ryšys.** Visi ryšiai (api.meteo.lt, RainViewer, GitHub) naudoja HTTPS, o serverių sertifikatai tikrinami pagal Mozilla šakninių sertifikatų sąrašą.
 - **Gamykliniai nustatymai.** Mygtukas **Nustatymai → Gamykliniai nustatymai** ištrina Wi-Fi tinklą ir slaptažodį, vietovę bei kitus nustatymus.
+- **Saugumo atnaujinimai** leidžiami bent iki 2031-12-31. Apie spragas praneškite privačiai, kaip aprašyta [`SECURITY.md`](SECURITY.md).
+  Komponentų sąrašas (SBOM, CycloneDX): [`sbom.cdx.json`](sbom.cdx.json).
 
 ## Atviro kodo komponentai
 
