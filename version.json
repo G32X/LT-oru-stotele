@@ -1,8 +1,8 @@
 {
-    "version":  "1.3.10",
-    "build":  37,
-    "size":  3921104,
-    "md5":  "e57950ed01ceeeb962674a68f13259c1",
-    "date":  "2026-11-23 18:20",
-    "notes":  "Ekranas atnaujinamas ~31 karta per sekunde (28 MHz) - maziau mirga; radaro legendoje sniegas rodomas tik kai radare yra sniego"
+    "version":  "1.3.11",
+    "build":  38,
+    "size":  3922928,
+    "md5":  "91ed59756c561b7f765b0010afa8ef82",
+    "date":  "2026-11-23 19:16",
+    "notes":  "Ekranas ~33 kartus per sekunde (30 MHz) be glitch\u0027u; radaro legenda be sniego - didesne lietaus skale; ilgi vietoviu pavadinimai sutrumpinami; paieskoje 3 paskutines vietoves"
 }
