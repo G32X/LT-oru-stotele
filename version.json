@@ -1,8 +1,8 @@
 {
-    "version":  "1.3.9",
-    "build":  36,
-    "size":  3920736,
-    "md5":  "248f7866302ec0cc1f0350c5fe40a64e",
-    "date":  "2026-11-22 21:08",
-    "notes":  "Naujas atnaujinimu adresas (repo pervadinamas i LT-oru-stotele), sekami HTTP nukreipimai"
+    "version":  "1.3.10",
+    "build":  37,
+    "size":  3921104,
+    "md5":  "e57950ed01ceeeb962674a68f13259c1",
+    "date":  "2026-11-23 18:20",
+    "notes":  "Ekranas atnaujinamas ~31 karta per sekunde (28 MHz) - maziau mirga; radaro legendoje sniegas rodomas tik kai radare yra sniego"
 }
