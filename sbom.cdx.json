@@ -1,15 +1,15 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:0a1def1d-ef97-4574-ac63-e7542cd1ea61",
+  "serialNumber": "urn:uuid:f79ad5bc-2765-46f3-a5dc-85400c2d383b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-24T16:43:37Z",
+    "timestamp": "2026-11-24T17:34:21Z",
     "component": {
       "type": "firmware",
       "name": "Lietuvos orų stotelė",
-      "version": "1.3.17",
-      "bom-ref": "oru-stotele@1.3.17",
+      "version": "1.3.18",
+      "bom-ref": "oru-stotele@1.3.18",
       "description": "Firmware for Waveshare ESP32-S3-Touch-LCD-7B"
     }
   },
@@ -208,7 +208,7 @@
   ],
   "dependencies": [
     {
-      "ref": "oru-stotele@1.3.17",
+      "ref": "oru-stotele@1.3.18",
       "dependsOn": [
         "arduino-esp32@3.3.12",
         "esp-idf@5.5.5",

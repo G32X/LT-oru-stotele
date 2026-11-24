@@ -1,8 +1,8 @@
 {
-    "version":  "1.3.17",
-    "build":  44,
-    "size":  3919920,
-    "md5":  "9f7a5d0d630043d31e6fbc2f6416c06b",
-    "date":  "2026-11-24 18:43",
-    "notes":  "Ekranas 30 MHz, kraunant duomenis 23 MHz, didesnis vaizdo buferis (20 eiluciu) - maziau glitch\u0027u"
+    "version":  "1.3.18",
+    "build":  45,
+    "size":  3921104,
+    "md5":  "8b170ee2bd877c5846021c363e523c56",
+    "date":  "2026-11-24 19:34",
+    "notes":  "Paieskos istorija - 3 paskutines vietoves virsuje; sveikinimo paveikslelio palaikymas"
 }
