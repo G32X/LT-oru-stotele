@@ -1,8 +1,8 @@
 {
-    "version":  "1.3.16",
-    "build":  43,
+    "version":  "1.3.17",
+    "build":  44,
     "size":  3919920,
-    "md5":  "2f07942cea0f13f8ec6da272d0be3384",
-    "date":  "2026-11-24 18:18",
-    "notes":  "Ekrano daznis 29 MHz (~32 kartai per sekunde), kraunant duomenis 23 MHz - mazesne glitch\u0027u tikimybe"
+    "md5":  "9f7a5d0d630043d31e6fbc2f6416c06b",
+    "date":  "2026-11-24 18:43",
+    "notes":  "Ekranas 30 MHz, kraunant duomenis 23 MHz, didesnis vaizdo buferis (20 eiluciu) - maziau glitch\u0027u"
 }
