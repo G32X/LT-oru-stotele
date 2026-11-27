@@ -30,7 +30,8 @@ reikalauja Kibernetinio atsparumo aktas (ES) 2024/2847.
 - Ekraniukas neatidaro jokių tinklo prievadų: jame nėra interneto serverio, nuotolinio prisijungimo ar
   debesijos paskyrų. Bluetooth išjungtas.
 - Vienintelė priimanti sąsaja yra lauko jutiklio ESP-NOW paketai. Priimami tik tikslaus dydžio ir formato
-  paketai ir tik iš susieto jutiklio (pirmas išgirstas jutiklis susiejamas, jį galima atsieti). Paketai
+  paketai ir tik iš susieto jutiklio. Jutiklį susieja tik naudotojas (**Nustatymai → Ieškoti jutiklių**),
+  jį galima atsieti. Paketai
   turi tik temperatūrą, drėgmę ir baterijos įtampą, jokių komandų.
 - Wi-Fi slaptažodis laikomas tik pačiame ekraniuke. Mygtukas **Nustatymai → Gamykliniai nustatymai** jį ištrina.
 - Komponentų sąrašas (SBOM, CycloneDX): [`sbom.cdx.json`](sbom.cdx.json).
