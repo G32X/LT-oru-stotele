@@ -29,6 +29,9 @@ reikalauja Kibernetinio atsparumo aktas (ES) 2024/2847.
 - Visi ryšiai vyksta per HTTPS, o serverių sertifikatai tikrinami pagal Mozilla šakninių sertifikatų sąrašą.
 - Ekraniukas neatidaro jokių tinklo prievadų: jame nėra interneto serverio, nuotolinio prisijungimo ar
   debesijos paskyrų. Bluetooth išjungtas.
+- Vienintelė priimanti sąsaja yra lauko jutiklio ESP-NOW paketai. Priimami tik tikslaus dydžio ir formato
+  paketai ir tik iš susieto jutiklio (pirmas išgirstas jutiklis susiejamas, jį galima atsieti). Paketai
+  turi tik temperatūrą, drėgmę ir baterijos įtampą, jokių komandų.
 - Wi-Fi slaptažodis laikomas tik pačiame ekraniuke. Mygtukas **Nustatymai → Gamykliniai nustatymai** jį ištrina.
 - Komponentų sąrašas (SBOM, CycloneDX): [`sbom.cdx.json`](sbom.cdx.json).
 
@@ -37,6 +40,8 @@ reikalauja Kibernetinio atsparumo aktas (ES) 2024/2847.
 - Ekraniuko atmintis nešifruota. Kas turi fizinę prieigą prie ekraniuko ir USB laidą, gali nuskaityti
   išsaugotą Wi-Fi slaptažodį arba įrašyti kitą programą. Prieš atiduodami ekraniuką kitam asmeniui, atkurkite
   gamyklinius nustatymus.
+- Lauko jutiklio ESP-NOW paketai nešifruojami. Netoliese esantis įrenginys teoriškai galėtų apsimesti
+  susietu jutikliu ir siųsti netikrus temperatūros ar drėgmės rodmenis. Kitokio poveikio ekraniukui tai neturi.
 - Orų ir radaro duomenis teikia išorinės paslaugos (LHMT, RainViewer). Jų saugumas nepriklauso šiam projektui.
 
 ---
@@ -44,4 +49,5 @@ reikalauja Kibernetinio atsparumo aktas (ES) 2024/2847.
 **English summary:** security fixes are provided for the latest firmware version only, at least until
 **2031-12-31**. Report vulnerabilities privately via GitHub (**Security → Report a vulnerability**);
 please do not open public issues. Acknowledgement within 5 working days. Updates are ECDSA-signed with
-anti-rollback, all traffic is HTTPS with certificate validation, and the device exposes no network services.
+anti-rollback, all traffic is HTTPS with certificate validation, and the device exposes no network services;
+it only receives fixed-format, unencrypted ESP-NOW readings from its paired outdoor sensor.

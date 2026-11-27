@@ -1,8 +1,8 @@
 {
-    "version":  "1.3.18",
-    "build":  45,
-    "size":  3921104,
-    "md5":  "8b170ee2bd877c5846021c363e523c56",
-    "date":  "2026-11-24 19:34",
-    "notes":  "Paieskos istorija - 3 paskutines vietoves virsuje; sveikinimo paveikslelio palaikymas"
+    "version":  "1.3.19",
+    "build":  46,
+    "size":  3938976,
+    "md5":  "b733a349aa31e00ae3555a3f8737bc9a",
+    "date":  "2026-11-27 16:04",
+    "notes":  "Lauko sensorius (ESP-NOW) su 7 dienu istorija; greitesnis slinkimas; radaro uzrasas virsuje"
 }
